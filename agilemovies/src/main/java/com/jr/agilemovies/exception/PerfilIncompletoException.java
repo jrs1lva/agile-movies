@@ -1,5 +1,9 @@
 package com.jr.agilemovies.exception;
 
-public class PerfilIncompletoException {
+public class PerfilIncompletoException extends RuntimeException {
 
+	public PerfilIncompletoException(String mensagem) {
+		super(mensagem);
+	}
+	
 }

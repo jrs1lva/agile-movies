@@ -1,5 +1,9 @@
 package com.jr.agilemovies.exception;
 
-public class DuracaoInvalidaException {
-
+public class DuracaoInvalidaException extends RuntimeException {
+	
+	public DuracaoInvalidaException(String mensagem) {
+		super(mensagem);
+	}
+	
 }
