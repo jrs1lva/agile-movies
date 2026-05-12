@@ -1,23 +1,31 @@
 package com.jr.agilemovies.model;
 
 public class Recomendacao {
-	
-	private final Filme filme;
-	private final int pontuacao;
-	
-	public Recomendacao(Filme filme, int pontuacao) {
-		this.filme = filme;
-		this.pontuacao = pontuacao;
-	}
 
-	public Filme getFilme() {
-		return filme;
-	}
+    private final Filme filme;
+    private final double pontuacao;
+    private final String motivo;
 
-	public int getPontuacao() {
-		return pontuacao;
-	}
-	
-	
-	
+    public Recomendacao(
+            Filme filme,
+            double pontuacao,
+            String motivo
+    ) {
+
+        this.filme = filme;
+        this.pontuacao = pontuacao;
+        this.motivo = motivo;
+    }
+
+    public Filme getFilme() {
+        return filme;
+    }
+
+    public double getPontuacao() {
+        return pontuacao;
+    }
+
+    public String getMotivo() {
+        return motivo;
+    }
 }
