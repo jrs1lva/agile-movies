@@ -12,13 +12,7 @@ import com.jr.agilemovies.model.enums.ClassificacaoEtaria;
 import com.jr.agilemovies.model.enums.Genero;
 import com.jr.agilemovies.model.enums.Idioma;
 
-public class PerfilCinefiloModel {
-	
-	
-	
-	//DEVE TERMINAR AS VALIDAÇÕES
-	
-	
+public class PerfilCinefilo {
 	
 	private Map<Genero, Double> pesosGenero;
 	
@@ -30,7 +24,7 @@ public class PerfilCinefiloModel {
 	private List<String> filmesAssistidos;
 	private Map<String, Integer> notas;
 	
-	public PerfilCinefiloModel(int duracaoMinima, int duracaoMaxima, ClassificacaoEtaria classificacaoMaxima) {
+	public PerfilCinefilo(int duracaoMinima, int duracaoMaxima, ClassificacaoEtaria classificacaoMaxima) {
 		
 		definirDuracao(duracaoMinima, duracaoMaxima);
 		
@@ -84,8 +78,6 @@ public class PerfilCinefiloModel {
 		validarPeso(peso);
 		pesosGenero.put(genero, peso);
 	}
-	
-	// SETS AND GETTERS
 	
 	public int getDuracaoMinima() {
 		return duracaoMinima;

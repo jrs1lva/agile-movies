@@ -1,5 +1,7 @@
 package com.jr.agilemovies.model;
 
+import java.time.Year;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -7,7 +9,7 @@ import com.jr.agilemovies.model.enums.ClassificacaoEtaria;
 import com.jr.agilemovies.model.enums.Genero;
 import com.jr.agilemovies.model.enums.Idioma;
 
-public class FilmeModel {
+public class Filme {
 	private String id;
 	private String titulo;
 	private int ano;
@@ -17,18 +19,25 @@ public class FilmeModel {
 	private Idioma idioma;
 	private double popularidade;
 	
-	public FilmeModel(String id, String titulo, int ano, int duracao, List<Genero> generos,
+	public Filme(String id, String titulo, int ano, int duracao,
 			ClassificacaoEtaria classificacao, Idioma idioma, double popularidade) {
+		
+		validarTexto(id);
+		validarTexto(titulo);
+		validarAno(ano);
+		validarDuracao(duracao);
+		validarPopularidade(popularidade);
+		
 		this.id = id;
 		this.titulo = titulo;
 		this.ano = ano;
 		this.duracao = duracao;
-		this.generos = generos;
 		this.classificacao = classificacao;
 		this.idioma = idioma;
 		this.popularidade = popularidade;
+		
+		this.generos = new ArrayList<Genero>();
 	}
-	
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -42,7 +51,7 @@ public class FilmeModel {
 	    if (getClass() != obj.getClass())
 	        return false;
 
-	    FilmeModel other = (FilmeModel) obj;
+	    Filme other = (Filme) obj;
 
 	    return Objects.equals(id, other.id);
 	}
@@ -52,12 +61,46 @@ public class FilmeModel {
 	    return Objects.hash(id);
 	}
 	
+	public void adicionarGenero(Genero genero) {
+		if (!generos.contains(genero)) {
+			generos.add(genero);
+		}
+	}
+	
+	private void validarAno(int ano) {
+		
+		int anoAtual = Year.now().getValue();
+		
+		if (ano < 1800 || ano > anoAtual) {
+			throw new IllegalArgumentException("Não existe filme nesse ano selecionado.");
+		}
+		
+	}
+	
+	private void validarDuracao(int duracao) {
+		if (duracao <= 0) {
+			throw new IllegalArgumentException("A duração deve ser maior que 0 minutos.");
+		}
+	}
+	
+	private void validarPopularidade(double popularidade) {
+		if (popularidade < 0 || popularidade > 100) {
+			throw new IllegalArgumentException("A popularidade deve estar entre 0 e 100.");
+		}
+	}
+	
+	private void validarTexto(String texto) {
+		if (texto == null || texto.isBlank()) {
+			throw new IllegalArgumentException("Texto não pode ser vazio");
+		}
+	}
+	
+	public List<Genero> getGeneros() {
+		return new ArrayList<>(generos);
+	}
+	
 	public String getId() {
 		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getTitulo() {
@@ -65,6 +108,7 @@ public class FilmeModel {
 	}
 
 	public void setTitulo(String titulo) {
+		validarTexto(titulo);
 		this.titulo = titulo;
 	}
 
@@ -73,6 +117,7 @@ public class FilmeModel {
 	}
 
 	public void setAno(int ano) {
+		validarAno(ano);
 		this.ano = ano;
 	}
 
@@ -81,15 +126,17 @@ public class FilmeModel {
 	}
 
 	public void setDuracao(int duracao) {
+		validarDuracao(duracao);
 		this.duracao = duracao;
 	}
 
-	public List<Genero> getGeneros() {
-		return generos;
+	public double getPopularidade() {
+		return popularidade;
 	}
 
-	public void setGeneros(List<Genero> generos) {
-		this.generos = generos;
+	public void setPopularidade(double popularidade) {
+		validarPopularidade(popularidade);
+		this.popularidade = popularidade;
 	}
 
 	public ClassificacaoEtaria getClassificacao() {
@@ -106,16 +153,6 @@ public class FilmeModel {
 
 	public void setIdioma(Idioma idioma) {
 		this.idioma = idioma;
-	}
-
-	public double getPopularidade() {
-		return popularidade;
-	}
-
-	public void setPopularidade(double popularidade) {
-		this.popularidade = popularidade;
-	}
-	
-	
+	}	
 	
 }

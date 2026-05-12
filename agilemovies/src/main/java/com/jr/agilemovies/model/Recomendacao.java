@@ -1,5 +1,5 @@
 package com.jr.agilemovies.model;
 
-public class RecomendacaoModel {
+public class Recomendacao {
 
 }

@@ -1,12 +1,12 @@
 package com.jr.agilemovies.model;
 
-public class UsuarioModel {
+public class Usuario {
 	
 	private String nome;
 	private int idade;
-	private PerfilCinefiloModel perfil;
+	private PerfilCinefilo perfil;
 	
-	public UsuarioModel(String nome, int idade, PerfilCinefiloModel perfil) {
+	public Usuario(String nome, int idade, PerfilCinefilo perfil) {
 		
 		this.nome = nome;
 		this.idade = idade;
@@ -29,11 +29,11 @@ public class UsuarioModel {
 		this.idade = idade;
 	}
 
-	public PerfilCinefiloModel getPerfil() {
+	public PerfilCinefilo getPerfil() {
 		return perfil;
 	}
 
-	public void setPerfil(PerfilCinefiloModel perfil) {
+	public void setPerfil(PerfilCinefilo perfil) {
 		this.perfil = perfil;
 	}
 	
