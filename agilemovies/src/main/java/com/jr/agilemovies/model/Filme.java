@@ -10,11 +10,11 @@ import com.jr.agilemovies.model.enums.Genero;
 import com.jr.agilemovies.model.enums.Idioma;
 
 public class Filme {
-	private String id;
+	private final String id;
 	private String titulo;
 	private int ano;
 	private int duracao;
-	private List<Genero> generos;
+	private final List<Genero> generos;
 	private ClassificacaoEtaria classificacao;
 	private Idioma idioma;
 	private double popularidade;
